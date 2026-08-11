@@ -118,6 +118,38 @@ StudentRecord
 
 ---
 
+## Development Notes
+
+### Module resolution (src layout)
+
+This project uses the `src/` layout. The `capstone` package is installed
+in editable mode via:
+
+    uv pip install -e .
+
+This must be run once after cloning. After installation, all commands
+work without any `PYTHONPATH` prefix:
+
+    uv run python -m capstone.main
+    uv run pytest
+    uv run alembic upgrade head
+
+If you ever see `ModuleNotFoundError: No module named 'capstone'`, it means
+the package is not installed in editable mode. Re-run `uv pip install -e .`
+to fix it.
+
+### Test database
+
+Tests use a separate database to prevent corrupting Alembic migration state.
+Create it once with:
+
+    docker exec -it capstone_db psql -U capstone_user \
+      -c "CREATE DATABASE capstone_test_db;"
+
+Tests use transaction rollback for isolation — no manual cleanup needed.
+
+---
+
 ## Getting Started
 
 ### 1. Clone the repository

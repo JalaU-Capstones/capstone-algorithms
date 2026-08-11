@@ -1,0 +1,3 @@
+"""Record service module."""
+
+pass

@@ -260,9 +260,9 @@ chore(config): configure ruff and mypy in pyproject.toml
 
 | Phase | Description | Status |
 |---|---|---|
-| 1 — Foundation | Project setup, Docker, DB schema, migrations, repository layer | 🔲 Pending |
-| 2 — Algorithms | Search + sort implementations, unit tests, complexity docs | 🔲 Pending |
-| 3 — Services | Business logic layer, statistics module | 🔲 Pending |
+| 1 — Foundation | Project setup, Docker, DB schema, migrations, repository layer | ✅ Completed |
+| 2 — Algorithms | Search + sort implementations, unit tests, complexity docs | ✅ Completed |
+| 3 — Services | Business logic layer, statistics module | ✅ Completed |
 | 4 — CLI | Interactive menu, full integration | 🔲 Pending |
 | 5 — Docs | Complexity reports, README, PDF base | 🔲 Pending |
 

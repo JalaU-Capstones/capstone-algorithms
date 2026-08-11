@@ -1,0 +1,3 @@
+"""CLI Menu module."""
+
+pass

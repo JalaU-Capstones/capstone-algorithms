@@ -118,6 +118,41 @@ StudentRecord
 
 ---
 
+## Development Notes
+
+### Module resolution (src layout)
+
+This project uses the `src/` layout. The `capstone` package is installed
+in editable mode via:
+
+    uv pip install -e .
+
+This must be run once after cloning. After installation, all commands
+work without any `PYTHONPATH` prefix:
+
+    uv run python -m capstone.main
+    uv run pytest
+    uv run alembic upgrade head
+
+If you ever see `ModuleNotFoundError: No module named 'capstone'`, it means
+the package is not installed in editable mode. Re-run `uv pip install -e .`
+to fix it.
+
+### Test database
+
+Both the application database and the test database are created
+automatically on the first `docker compose up`. No manual setup required.
+
+The initialization script at `docker/postgres/init.sh` is mounted into
+the PostgreSQL container and executed automatically on first startup.
+
+If you need to reset and recreate both databases from scratch:
+
+    docker compose down -v       # removes the volume (destroys all data)
+    docker compose up -d         # recreates the container and both databases
+
+---
+
 ## Getting Started
 
 ### 1. Clone the repository

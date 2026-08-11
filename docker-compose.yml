@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: capstone_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-capstone_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-capstone_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-capstone_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init.sh:/docker-entrypoint-initdb.d/init.sh
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-capstone_user} -d ${POSTGRES_DB:-capstone_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    external: false

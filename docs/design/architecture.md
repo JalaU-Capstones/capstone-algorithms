@@ -53,3 +53,10 @@
 4. **Repository:** The repository translates the request into an SQL query via SQLAlchemy.
 5. **Database:** PostgreSQL executes the query and returns the results.
 6. **Return:** The data flows back up as DTOs, which the CLI formats and displays to the user.
+
+## Local Development Databases
+- `capstone_db` is the application database
+- `capstone_test_db` is the test database
+- Both are created automatically on first `docker compose up`
+- The init script location: `docker/postgres/init.sh`
+- Developers never need to create databases manually

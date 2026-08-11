@@ -140,13 +140,16 @@ to fix it.
 
 ### Test database
 
-Tests use a separate database to prevent corrupting Alembic migration state.
-Create it once with:
+Both the application database and the test database are created
+automatically on the first `docker compose up`. No manual setup required.
 
-    docker exec -it capstone_db psql -U capstone_user \
-      -c "CREATE DATABASE capstone_test_db;"
+The initialization script at `docker/postgres/init.sh` is mounted into
+the PostgreSQL container and executed automatically on first startup.
 
-Tests use transaction rollback for isolation — no manual cleanup needed.
+If you need to reset and recreate both databases from scratch:
+
+    docker compose down -v       # removes the volume (destroys all data)
+    docker compose up -d         # recreates the container and both databases
 
 ---
 

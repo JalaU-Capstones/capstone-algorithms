@@ -200,6 +200,9 @@ uv run python -m capstone.scripts.seed
 uv run python -m capstone.main
 ```
 
+> The menu is fully interactive. Use options 1–6 to navigate.
+> Ensure the database is running and seeded before launching.
+
 ---
 
 ## Development
@@ -263,7 +266,7 @@ chore(config): configure ruff and mypy in pyproject.toml
 | 1 — Foundation | Project setup, Docker, DB schema, migrations, repository layer | ✅ Completed |
 | 2 — Algorithms | Search + sort implementations, unit tests, complexity docs | ✅ Completed |
 | 3 — Services | Business logic layer, statistics module | ✅ Completed |
-| 4 — CLI | Interactive menu, full integration | 🔲 Pending |
+| 4 — CLI | Interactive menu, full integration | ✅ Completed |
 | 5 — Docs | Complexity reports, README, PDF base | 🔲 Pending |
 
 ---

@@ -98,7 +98,13 @@ jobs:
 
       - name: Create test database
         run: |
-          PGPASSWORD=capstone_pass psql -h localhost -U capstone_user \
+          # Wait for PostgreSQL to accept connections
+          until PGPASSWORD=capstone_pass pg_isready -h localhost -p 5432 -U capstone_user; do
+            echo "Waiting for PostgreSQL..."
+            sleep 2
+          done
+          # Create the test database
+          PGPASSWORD=capstone_pass psql -h localhost -p 5432 -U capstone_user \
             -c "CREATE DATABASE capstone_test_db;"
         env:
           PGPASSWORD: capstone_pass

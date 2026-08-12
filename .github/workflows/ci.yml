@@ -98,13 +98,11 @@ jobs:
 
       - name: Create test database
         run: |
-          # Wait until PostgreSQL fully initializes and the user is available
-          until PGPASSWORD=capstone_pass pg_isready -h localhost -p 5432 -U capstone_user; do
-            echo "Waiting for PostgreSQL and user initialization..."
-            sleep 3
-          done
-          # Now create the test database using the existing user
-          PGPASSWORD=capstone_pass psql -h localhost -p 5432 -U capstone_user \
+          PGPASSWORD=capstone_pass psql \
+            -h localhost \
+            -p 5432 \
+            -U capstone_user \
+            -d postgres \
             -c "CREATE DATABASE capstone_test_db;"
         env:
           PGPASSWORD: capstone_pass
